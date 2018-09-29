@@ -1,0 +1,11 @@
+# Need super user level permission to execute docker.
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t mentallabyrinth/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run mentallabyrinth/docker-react npm run test -- --coverage
